@@ -4,7 +4,7 @@ import { addSmurf } from "../actions";
 
 class SmurfForm extends React.Component {
   state = {
-    smurf: {
+    newSmurf: {
       name: "",
       age: "",
       height: ""
@@ -13,15 +13,15 @@ class SmurfForm extends React.Component {
 
   submitSmurf = event => {
     event.preventDefault();
-    this.props.addSmurf(this.state.smurf);
+    this.props.addSmurf(this.state.newSmurf);
   };
 
   handleInputChange = event => {
     event.persist();
     this.setState(prevState => ({
       ...this.state,
-      smurf: {
-        ...prevState.smurf,
+      newSmurf: {
+        ...prevState.newSmurf,
         [event.target.name]: event.target.value
       }
     }));
@@ -34,19 +34,19 @@ class SmurfForm extends React.Component {
           <input
             onChange={this.handleInputChange}
             placeholder="name"
-            value={this.state.smurf.name}
+            value={this.state.newSmurf.name}
             name="name"
           />
           <input
             onChange={this.handleInputChange}
             placeholder="age"
-            value={this.state.smurf.age}
+            value={this.state.newSmurf.age}
             name="age"
           />
           <input
             onChange={this.handleInputChange}
             placeholder="height"
-            value={this.state.smurf.height}
+            value={this.state.newSmurf.height}
             name="height"
           />
           <button type="submit">Add to the village</button>
