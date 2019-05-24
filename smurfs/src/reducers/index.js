@@ -24,13 +24,17 @@
 
 import {
   FINDING_SMURFS,
-  LOADED_SMURFS,
+  FOUND_SMURFS,
   ADDING_SMURF,
-  UPDATE_SMURF,
-  DELETE_SMURF
+  ADDED_SMURF
+  // UPDATE_SMURF,
+  // UPDATED_SMURF,
+  // DELETE_SMURF,
+  // DELETED_SMURF
 } from "../actions";
 
 const initialState = {
+  activeSmurf: null,
   smurfs: [],
   loadingSmurfs: false,
   addingSmurf: false,
@@ -46,7 +50,7 @@ function smurfReducer(state = initialState, action) {
         ...state,
         loadingSmurfs: true
       };
-    case LOADED_SMURFS:
+    case FOUND_SMURFS:
       return {
         ...state,
         smurfs: action.payload,
@@ -57,16 +61,31 @@ function smurfReducer(state = initialState, action) {
         ...state,
         smurfs: action.payload
       };
-    case UPDATE_SMURF:
+    case ADDED_SMURF:
       return {
         ...state,
         smurfs: action.payload
       };
-    case DELETE_SMURF:
-      return {
-        ...state,
-        smurfs: action.payload
-      };
+    // case UPDATE_SMURF:
+    //   return {
+    //     ...state,
+    //     smurfs: action.payload
+    //   };
+    //   case UPDATED_SMURF:
+    //     return {
+    //       ...state,
+    //       smurfs: action.payload
+    //     };
+    // case DELETE_SMURF:
+    //   return {
+    //     ...state,
+    //     smurfs: action.payload
+    //   };
+    //   case DELETED_SMURF:
+    //     return {
+    //       ...state,
+    //       smurfs: action.payload
+    //     };
     default:
       return state;
   }
