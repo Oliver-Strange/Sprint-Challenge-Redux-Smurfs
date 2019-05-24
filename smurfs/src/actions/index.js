@@ -13,3 +13,74 @@
    U - updateSmurf
    D - deleteSmurf
 */
+import axios from "axios";
+
+export const FINDING_SMURFS = "FINDING_SMURFS";
+export const FOUND_SMURFS = "LOADED_SMURFS";
+export const ADDING_SMURF = "ADDING_SMURF";
+export const ADDED_SMURF = "ADDED_SMURF";
+// export const UPDATE_SMURF = "UPDATE_SMURF";
+// export const UPDATED_SMURF = "UPDATED_SMURF";
+// export const DELETE_SMURF = "DELETE_SMURF";
+// export const DELETED_SMURF = "DELETED_SMURF";
+
+export const getSmurfs = () => dispatch => {
+  dispatch({
+    type: FINDING_SMURFS
+  });
+  axios
+    .get("http://localhost:3333/smurfs")
+    .then(result => {
+      console.log(result.data);
+      dispatch({
+        type: FOUND_SMURFS,
+        payload: result.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({
+    type: ADDING_SMURF
+  });
+  axios
+    .post("http://localhost:3333/smurfs", smurf)
+    .then(result => {
+      console.log(result.data);
+      dispatch({
+        type: ADDED_SMURF,
+        payload: result.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+// export const updateSmurf = id => dispatch => {
+//   dispatch({
+//     type: UPDATE_SMURF
+//   })
+//   axios
+//     .put(`${baseURL}`)
+//     .then()
+//     .catch()
+// }
+
+// export const deleteSmurf = id => dispatch => {
+//   dispatch({
+//     type: DELETE_SMURF
+//   })
+//   axios
+//     .delete(`${baseURL}/smurfs/${id}`)
+//     .then(result => {
+//       dispatch({
+//         type: DELETED_SMURF,
+//         payload: result.data
+//       })
+//     })
+//     .catch(err)
+// }
