@@ -34,7 +34,6 @@ import {
 } from "../actions";
 
 const initialState = {
-  activeSmurf: null,
   smurfs: [],
   loadingSmurfs: false,
   addingSmurf: false,

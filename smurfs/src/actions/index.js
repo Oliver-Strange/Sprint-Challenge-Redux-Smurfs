@@ -24,8 +24,6 @@ export const ADDED_SMURF = "ADDED_SMURF";
 // export const DELETE_SMURF = "DELETE_SMURF";
 // export const DELETED_SMURF = "DELETED_SMURF";
 
-const baseURL = "http://localhost:3333";
-
 export const getSmurfs = () => dispatch => {
   dispatch({
     type: FINDING_SMURFS
