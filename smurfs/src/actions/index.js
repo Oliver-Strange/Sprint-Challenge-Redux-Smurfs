@@ -31,14 +31,17 @@ export const getSmurfs = () => dispatch => {
     type: FINDING_SMURFS
   });
   axios
-    .post(`${baseURL}/smurfs`)
+    .get("http://localhost:3333/smurfs")
     .then(result => {
+      console.log(result.data);
       dispatch({
         type: FOUND_SMURFS,
         payload: result.data
       });
     })
-    .catch(err);
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const addSmurf = smurf => dispatch => {
@@ -46,14 +49,16 @@ export const addSmurf = smurf => dispatch => {
     type: ADDING_SMURF
   });
   axios
-    .post(`${baseURL}/smurfs`, smurf)
+    .post("http://localhost:3333/smurfs", smurf)
     .then(result => {
       dispatch({
         type: ADDED_SMURF,
         payload: result.data
       });
     })
-    .catch(err);
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 // export const updateSmurf = id => dispatch => {
