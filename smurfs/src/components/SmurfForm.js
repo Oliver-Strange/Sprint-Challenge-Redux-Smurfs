@@ -18,6 +18,7 @@ class SmurfForm extends React.Component {
 
   handleInputChange = event => {
     event.persist();
+    console.log(event.target);
     this.setState(prevState => ({
       ...this.state,
       newSmurf: {

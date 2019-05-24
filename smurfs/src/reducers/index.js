@@ -58,12 +58,13 @@ function smurfReducer(state = initialState, action) {
     case ADDING_SMURF:
       return {
         ...state,
-        smurfs: action.payload
+        loadingSmurfs: true
       };
     case ADDED_SMURF:
       return {
         ...state,
-        smurfs: action.payload
+        smurfs: action.payload,
+        loadingSmurfs: false
       };
     // case UPDATE_SMURF:
     //   return {
